@@ -1,24 +1,24 @@
 NAME		= philo
 
 SRC			= main.c \
-				parcer.c
-OBJ			= $(SRC:.c=.o)
-
+				parser.c
 SRC_PATH	= philo/
+SRCS		+=	$(addprefix $(SRC_PATH), $(SRC))
+OBJS		=	$(SRCS:.c=.o)
 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -I.
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-	rm -f $(OBJ)
+clean:SRC_PATH
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)

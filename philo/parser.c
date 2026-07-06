@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parcer.c                                           :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:06:00 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/06 19:37:25 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/06 20:47:27 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "includes/philo.h"
 
 static	int	ft_atoi(const char *nptr)
 {
@@ -26,16 +26,16 @@ static	int	ft_atoi(const char *nptr)
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-')
-			sign *= -1;
+			return (-1);
 		i++;
 	}
 	while (nptr[i] && nptr[i] >= 48 && nptr[i] <= 57)
 	{
 		output = output * 10 + (nptr[i] - '0');
 		i++;
+		if (output > INT_MAX)
+			return (-1);
 	}
-	if (output > INT_MAX)
-		return (-1);
 	return (sign * output);
 }
 
