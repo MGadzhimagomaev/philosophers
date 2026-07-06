@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:06:00 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/06 20:47:27 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/06 21:14:23 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,10 @@
 static	int	ft_atoi(const char *nptr)
 {
 	int						i;
-	int						sign;
 	unsigned long long int	output;
 
 	i = 0;
-	sign = 1;
 	output = 0;
-	while (nptr[i] == 32 || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			return (-1);
-		i++;
-	}
 	while (nptr[i] && nptr[i] >= 48 && nptr[i] <= 57)
 	{
 		output = output * 10 + (nptr[i] - '0');
@@ -36,7 +26,7 @@ static	int	ft_atoi(const char *nptr)
 		if (output > INT_MAX)
 			return (-1);
 	}
-	return (sign * output);
+	return ((int)output);
 }
 
 static	int	check_only_numbers(char	*str)
@@ -64,7 +54,7 @@ int	parse(int argc, char **argv)
 		if (check_only_numbers(argv[i]) == -1)
 			return (printf("%s\n", ERROR_DIG), -1);
 		num = ft_atoi(argv[i]);
-		if (num < 0)
+		if (num < 1)
 			return (printf("%s\n", ERROR_DIG), -1);
 		i++;
 	}
