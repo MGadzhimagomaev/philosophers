@@ -1,7 +1,8 @@
 NAME		= philo
 
-SRC			= main.c \
-				parser.c
+SRC			=	main.c \
+				parser.c \
+				init_destroy.c
 OBJS		=	$(SRC:.c=.o)
 
 CC			= cc
