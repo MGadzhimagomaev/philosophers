@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:06:00 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/05 20:07:40 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/06 19:37:25 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static	int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	sign;
+	int						i;
+	int						sign;
 	unsigned long long int	output;
 
 	i = 0;
@@ -41,25 +41,24 @@ static	int	ft_atoi(const char *nptr)
 
 static	int	check_only_numbers(char	*str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] > '9' || str[i] < '0')
-			return -1;
+			return (-1);
 		i++;
 	}
-	return 0;
+	return (0);
 }
 
 int	parse(int argc, char **argv)
 {
-	int	i;
+	int			i;
 	long long	num;
 
 	i = 1;
-
 	while (i < argc)
 	{
 		if (check_only_numbers(argv[i]) == -1)

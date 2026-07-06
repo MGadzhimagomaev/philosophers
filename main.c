@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:06:17 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/05 20:06:31 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/06 19:39:31 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ int	main(int argc, char **argv)
 	t_params	params;
 
 	if (argc != 5 && argc != 6)
-		return(printf("%s\n", ERROR_NUM_OF_ARGS), 1);
+		return (printf("%s\n", ERROR_NUM_OF_ARGS), 1);
 	if (parse(argc, argv) == 1)
 		assign_params(&params, argv, argc);
-	
 	printf("%d\n", params.cnt_of_philos);
 	printf("%d\n", params.time_to_die);
 	printf("%d\n", params.time_to_eat);

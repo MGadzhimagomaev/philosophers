@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/06 19:37:37 by mgadzhim          #+#    #+#             */
+/*   Updated: 2026/07/06 19:38:34 by mgadzhim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -13,7 +25,7 @@
 
 /* Structs*/
 
-typedef	struct	s_params
+typedef struct s_params
 {
 	int	cnt_of_philos;
 	int	time_to_die;
