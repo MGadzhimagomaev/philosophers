@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:00 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/07 21:58:32 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/07 22:08:42 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	if (philo->num == 1)
+	if (philo->data->params.cnt_of_philos == 1)
 	{
 		print_status(philo, "has taken a fork");
 		ft_usleep(philo->data->params.time_to_die);

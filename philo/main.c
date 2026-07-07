@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:06:17 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/07 21:17:16 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/07 22:10:16 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	int		i;
 
 	if (argc != 5 && argc != 6)
 		return (printf("%s\n", ERROR_NUM_OF_ARGS), 1);
@@ -24,22 +23,8 @@ int	main(int argc, char **argv)
 	assign_params(&data.params, argv, argc);
 	if (init_data(&data) == -1)
 		return (1);
-	i = 0;
-	while (i < data.params.cnt_of_philos)
-	{
-		printf("philo %d: l_fork=%p r_fork=%p\n",
-			data.philos[i].num,
-			(void *)data.philos[i].l_fork,
-			(void *)data.philos[i].r_fork);
-		i++;
-	}
-	pthread_mutex_lock(&data.forks[0]);
-	printf("lock ok\n");
-	pthread_mutex_unlock(&data.forks[0]);
+	if (create_threads(&data) == -1)
+		return (cleanup(&data), 1);
 	cleanup(&data);
-	printf("%d\n", data.params.cnt_of_philos);
-	printf("%d\n", data.params.time_to_die);
-	printf("%d\n", data.params.time_to_eat);
-	printf("%d\n", data.params.time_to_sleep);
-	printf("%d\n", data.params.cnt_times_to_eat);
+	return (0);
 }
