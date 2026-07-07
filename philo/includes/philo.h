@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 19:37:37 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/06 22:33:12 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/07 21:15:32 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <limits.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 /* Errors*/
 
@@ -62,5 +63,8 @@ int		parse(int argc, char **argv);
 void	assign_params(t_params *params, char **argv, int argc);
 int		init_data(t_data *data);
 void	cleanup(t_data *data);
+void	print_status(t_philo *philo, char *msg);
+long	get_timestamp(void);
+void	ft_usleep(long ms);
 
 #endif

@@ -2,8 +2,11 @@ NAME		= philo
 
 SRC			=	main.c \
 				parser.c \
-				init_destroy.c
-OBJS		=	$(SRC:.c=.o)
+				init.c \
+				clean.c \
+				print.c \
+				ts_utils.c
+OBJS		 =	$(SRC:.c=.o)
 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -I.
