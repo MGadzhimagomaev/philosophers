@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:00 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/07 22:44:49 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/07 22:55:56 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	take_forks(t_philo *philo)
 		print_status(philo, "has taken a fork");
 	}
 }
+
 static void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->meal_lock);
@@ -58,9 +59,9 @@ void	*routine(void *arg)
 		take_forks(philo);
 		if (stopped(philo->data))
 		{
-			pthread_mutex_unlock(philo->l_fork);
-			pthread_mutex_unlock(philo->r_fork);
-			break;
+			pthread_mutex_unlock (philo->l_fork);
+			pthread_mutex_unlock (philo->r_fork);
+			break ;
 		}
 		eat(philo);
 		print_status(philo, "is sleeping");

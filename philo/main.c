@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:06:17 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/07 22:42:50 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/07 23:06:07 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int argc, char **argv)
 	if (parse(argc, argv) == -1)
 		return (1);
 	assign_params(&data.params, argv, argc);
+	if (data.params.cnt_times_to_eat == 0)
+		return (0);
 	if (init_data(&data) == -1)
 		return (1);
 	if (create_threads(&data) == -1)

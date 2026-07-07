@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/05 19:06:00 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/06 21:14:23 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/07 23:06:08 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	parse(int argc, char **argv)
 		if (check_only_numbers(argv[i]) == -1)
 			return (printf("%s\n", ERROR_DIG), -1);
 		num = ft_atoi(argv[i]);
-		if (num < 1)
+		if (num < 1 && !(i == 5 && num == 0))
 			return (printf("%s\n", ERROR_DIG), -1);
 		i++;
 	}
