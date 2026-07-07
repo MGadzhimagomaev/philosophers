@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:34:00 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/07 22:12:22 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/07 22:44:49 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,17 @@ static void	take_forks(t_philo *philo)
 		print_status(philo, "has taken a fork");
 	}
 }
+static void	eat(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->data->meal_lock);
+	philo->last_meal_ts = get_timestamp();
+	philo->meals_cnt++;
+	pthread_mutex_unlock(&philo->data->meal_lock);
+	print_status(philo, "is eating");
+	ft_usleep(philo->data->params.time_to_eat);
+	pthread_mutex_unlock(philo->l_fork);
+	pthread_mutex_unlock(philo->r_fork);
+}
 
 void	*routine(void *arg)
 {
@@ -45,16 +56,16 @@ void	*routine(void *arg)
 	while (1)
 	{
 		take_forks(philo);
-		pthread_mutex_lock(&philo->data->meal_lock);
-		philo->last_meal_ts = get_timestamp();
-		philo->meals_cnt++;
-		pthread_mutex_unlock(&philo->data->meal_lock);
-		print_status(philo, "is eating");
-		ft_usleep(philo->data->params.time_to_eat);
-		pthread_mutex_unlock(philo->l_fork);
-		pthread_mutex_unlock(philo->r_fork);
+		if (stopped(philo->data))
+		{
+			pthread_mutex_unlock(philo->l_fork);
+			pthread_mutex_unlock(philo->r_fork);
+			break;
+		}
+		eat(philo);
 		print_status(philo, "is sleeping");
 		ft_usleep(philo->data->params.time_to_sleep);
 		print_status(philo, "is thinking");
 	}
+	return (NULL);
 }

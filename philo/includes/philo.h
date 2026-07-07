@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 19:37:37 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/07 21:59:05 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/07 22:42:49 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,8 @@ long	get_timestamp(void);
 void	ft_usleep(long ms);
 void	*routine(void *arg);
 int		create_threads(t_data *data);
+int		stopped(t_data *data);
+void	set_stop(t_data *data);
+void	monitor(t_data *data);
 
 #endif

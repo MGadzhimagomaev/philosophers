@@ -7,7 +7,8 @@ SRC			=	main.c \
 				print.c \
 				ts_utils.c \
 				routine.c \
-				threads.c
+				threads.c \
+				monitor.c
 OBJS		 =	$(SRC:.c=.o)
 
 CC			= cc
