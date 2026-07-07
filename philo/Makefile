@@ -5,7 +5,9 @@ SRC			=	main.c \
 				init.c \
 				clean.c \
 				print.c \
-				ts_utils.c
+				ts_utils.c \
+				routine.c \
+				threads.c
 OBJS		 =	$(SRC:.c=.o)
 
 CC			= cc

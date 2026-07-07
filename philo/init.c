@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 21:57:44 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/07 20:49:12 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/07 21:31:55 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ int	init_data(t_data *data)
 	data->init_time = 0;
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->params.cnt_of_philos);
 	if (!data->forks)
-		return (1);
+		return (-1);
 	data->philos = malloc(sizeof(t_philo) * data->params.cnt_of_philos);
 	if (!data->philos)
-		return (free(data->forks), 1);
+		return (free(data->forks), -1);
 	if (init_mutexes(data) == -1)
-		return (free(data->forks), free(data->philos), 1);
+		return (free(data->forks), free(data->philos), -1);
 	init_philos(data);
 	return (0);
 }

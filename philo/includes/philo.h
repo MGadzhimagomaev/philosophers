@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 19:37:37 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/07 21:15:32 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/07 21:59:05 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_philo
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
 	struct s_data	*data;
+	pthread_t		thread;
 }	t_philo;
 
 typedef struct s_data
@@ -66,5 +67,7 @@ void	cleanup(t_data *data);
 void	print_status(t_philo *philo, char *msg);
 long	get_timestamp(void);
 void	ft_usleep(long ms);
+void	*routine(void *arg);
+int		create_threads(t_data *data);
 
 #endif
