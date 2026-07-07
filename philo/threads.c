@@ -6,7 +6,7 @@
 /*   By: mgadzhim <mgadzhim@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 21:51:47 by mgadzhim          #+#    #+#             */
-/*   Updated: 2026/07/07 22:03:39 by mgadzhim         ###   ########.fr       */
+/*   Updated: 2026/07/07 22:12:44 by mgadzhim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	create_threads(t_data *data)
 	while (i < data->params.cnt_of_philos)
 	{
 		if (pthread_create(&data->philos[i].thread, NULL, 
-			routine, &data->philos[i]) != 0)
+				routine, &data->philos[i]) != 0)
 			return (-1);
 		i++;
 	}
